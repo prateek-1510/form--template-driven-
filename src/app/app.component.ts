@@ -10,16 +10,18 @@ export class AppComponent {
   @ViewChild('f') formElement:NgForm;
   defaultSecurityQues="teacher";
   securityQuesReply:string;
+  genders=['male','female'];
 
   // onSubmit(form:NgForm)
   // {
   //   console.log(form);
   //
   // }
-  
+
   onSubmit()
   {
     console.log(this.formElement);
+    this.formElement.reset();
   }
 
 }
