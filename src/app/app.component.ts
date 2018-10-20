@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-root',
@@ -7,11 +7,16 @@ import { NgForm } from '@angular/forms';
 })
 export class AppComponent {
   title = 'form-one';
+  @ViewChild('f') formElement:NgForm;
 
-  onSubmit(form:NgForm)
+  // onSubmit(form:NgForm)
+  // {
+  //   console.log(form);
+  //
+  // }
+  onSubmit()
   {
-    console.log(form);
-
+    console.log(this.formElement);
   }
 
 }
