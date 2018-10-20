@@ -11,6 +11,15 @@ export class AppComponent {
   defaultSecurityQues="teacher";
   securityQuesReply:string;
   genders=['male','female'];
+  currentDate=new Promise(
+    (resolve,reject)=>{
+      setTimeout(()=>
+      {
+        resolve(new Date())
+      },3000);
+    }
+  );
+
 
   // onSubmit(form:NgForm)
   // {
