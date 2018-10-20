@@ -10,17 +10,18 @@
           <button class="btn btn-default" type="button">Suggest an Username</button>
           <div class="form-group">
             <label for="email">Mail</label>
-            <input type="email" id="email" class="form-control" ngModel name="email">
+            <input type="email" id="email" class="form-control" ngModel name="email" required email #emailInput="ngModel">
+            <span class="invalid-block" *ngIf="emailInput.invalid && emailInput.touched">Please Enter A Valid Email-Id</span>
           </div>
         </div>
         <div class="form-group">
           <label for="secret">Secret Questions</label>
-          <select id="secret" class="form-control" name="securityDropdown" ngModel>
+          <select id="secret" class="form-control" name="securityDropdown" [ngModel]="defaultSecurityQues">
             <option value="pet">Your first Pet?</option>
             <option value="teacher">Your first teacher?</option>
           </select>
         </div>
-        <button class="btn btn-primary" type="submit">Submit</button>
+        <button class="btn btn-primary" type="submit" [disabled]="!formElement.valid">Submit</button>
       </form>
     </div>
   </div>

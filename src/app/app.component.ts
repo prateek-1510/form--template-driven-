@@ -8,6 +8,7 @@ import { NgForm } from '@angular/forms';
 export class AppComponent {
   title = 'form-one';
   @ViewChild('f') formElement:NgForm;
+  defaultSecurityQues="teacher";
 
   // onSubmit(form:NgForm)
   // {
