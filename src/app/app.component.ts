@@ -9,12 +9,14 @@ export class AppComponent {
   title = 'form-one';
   @ViewChild('f') formElement:NgForm;
   defaultSecurityQues="teacher";
+  securityQuesReply:string;
 
   // onSubmit(form:NgForm)
   // {
   //   console.log(form);
   //
   // }
+  
   onSubmit()
   {
     console.log(this.formElement);
