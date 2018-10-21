@@ -1,6 +1,5 @@
-import { Component,ViewChild } from '@angular/core';
+import { Component,ViewChild,ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
-
 import { SaveReplyService } from './savereplies.service';
 import { Http } from '@angular/http';
 @Component({
@@ -11,9 +10,11 @@ import { Http } from '@angular/http';
 export class AppComponent {
   title = 'form-one';
   @ViewChild('f') formElement:NgForm;
+  @ViewChild('alertBox') alertB:ElementRef;
   defaultSecurityQues="teacher";
   securityQuesReply:string;
   genders=['male','female'];
+  saveReplyFlag:boolean=false;
   currentDate=new Promise(
     (resolve,reject)=>{
       setTimeout(()=>
@@ -27,13 +28,16 @@ export class AppComponent {
 
 
   }
+
   saveReply()
   {
     console.log(this.saveRepliesService);
     this.saveRepliesService.saveReplies(this.securityQuesReply)
     .subscribe((resolve)=>
   {
+
     console.log(resolve);
+    this.saveReplyFlag=true;
   }
   ,
   (reject)=>
@@ -43,13 +47,19 @@ export class AppComponent {
 );
 
   }
+  setSaveReplyFlag()
+  {
+    this.saveReplyFlag=true;
+    console.log(this.formElement);
+    console.log(this.alertB);
+
+    setTimeout(()=>
+    {
+      this.alertB.nativeElement.remove();
+    },4000);
+}
 
 
-  // onSubmit(form:NgForm)
-  // {
-  //   console.log(form);
-  //
-  // }
 
   onSubmit()
   {
