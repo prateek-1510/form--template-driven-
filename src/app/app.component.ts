@@ -1,5 +1,8 @@
 import { Component,ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+
+import { SaveReplyService } from './savereplies.service';
+import { Http } from '@angular/http';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -19,6 +22,27 @@ export class AppComponent {
       },3000);
     }
   );
+  constructor(private saveRepliesService:SaveReplyService)
+  {
+
+
+  }
+  saveReply()
+  {
+    console.log(this.saveRepliesService);
+    this.saveRepliesService.saveReplies(this.securityQuesReply)
+    .subscribe((resolve)=>
+  {
+    console.log(resolve);
+  }
+  ,
+  (reject)=>
+  {
+    console.log(reject);
+  }
+);
+
+  }
 
 
   // onSubmit(form:NgForm)
@@ -30,6 +54,7 @@ export class AppComponent {
   onSubmit()
   {
     console.log(this.formElement);
+    //saveReply();
     this.formElement.reset();
   }
 
